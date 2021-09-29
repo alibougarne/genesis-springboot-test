@@ -12,13 +12,13 @@ an exercise test with spring boot
 ## project structure
     .
     ├── ...
-    ├── src                                 # Test files (alternatively `spec` or `tests`)
-    │   ├── main                            # Load and stress tests
+    ├── src                                 # src folder
+    │   ├── main                            # main
     │   │   ├── java                        # java folder
     │   │   ├   ├── com.genesis.test        # code logic
     │   │   ├   ├   ├── config              # config classes
     │   │   ├   ├   ├── features            # contain separated featers (in our case contact and enterprise)
-    │   │   ├   ├   ├        ├── feature    # feature package
+    │   │   ├   ├   ├   ├── feature         # feature package name
     │   │   ├   ├   ├        ├── dto        # dto folder
     │   │   ├   ├   ├        ├── entityClass       
     │   │   ├   ├   ├        ├── controller 
@@ -33,8 +33,8 @@ an exercise test with spring boot
     │
     └── ...
 ## Data seeds
-i used java faker to generate data seeders
-replace the following code in application.properties to interrupting seeds
+i used java faker to generate data seeders,
+replace the following code in application.properties to interrupt seeds
 ```properties
 database.seed = true
 ```
