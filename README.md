@@ -1,7 +1,7 @@
 # genesis-springboot-test
 an exercise test with spring boot
 
-##stack
+## stack
 - spring boot 2.5.5
 - maven
 - H2 database
@@ -10,7 +10,7 @@ an exercise test with spring boot
 - spring data
 - lombok
 
-##Data seeds
+## Data seeds
 i used java faker to generate data seeders
 replace application.properties to interrupting seeds
 ```properties
@@ -20,8 +20,8 @@ with
 ```properties
 database.seed= false
 ```
-##H2 console
+## H2 console
 http://localhost:5000/h2console/
 
-##Swagger ui
+## Swagger ui
 http://localhost:5000/swagger-ui/index.html
