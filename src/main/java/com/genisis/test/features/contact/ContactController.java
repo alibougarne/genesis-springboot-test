@@ -1,7 +1,8 @@
 package com.genisis.test.features.contact;
 
 import com.genisis.test.features.contact.dto.ContactDTO;
-import com.genisis.test.features.enterprise.dto.ContactToEnterpriseDTO;
+import com.genisis.test.features.contact.dto.UpdateContactDTO;
+import com.genisis.test.features.enterprise.dto.AddContactToEnterpriseDTO;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -51,9 +52,9 @@ public class ContactController {
     @PutMapping("/{contactID}")
     public ResponseEntity<?> updateContact(
             @PathVariable String contactID,
-            @Valid @RequestBody ContactDTO contactDTO
+            @Valid @RequestBody UpdateContactDTO updateContactDTO
     ) throws Exception {
-        Contact contact = contactService.updateContact(contactID, contactDTO);
+        Contact contact = contactService.updateContact(contactID, updateContactDTO);
         return new ResponseEntity<>(contact, HttpStatus.CREATED);
     }
 
@@ -101,8 +102,8 @@ public class ContactController {
                     content = @Content)
     })
     @PostMapping("/add-one-contact-to-enterprise")
-    public ResponseEntity<?> addContactToEnterprise(@Valid @RequestBody ContactToEnterpriseDTO contactToEnterpriseDTO) throws Exception {
-        Contact contact = contactService.addContactToEnterprise(contactToEnterpriseDTO);
+    public ResponseEntity<?> addContactToEnterprise(@Valid @RequestBody AddContactToEnterpriseDTO addContactToEnterpriseDTO) throws Exception {
+        Contact contact = contactService.addContactToEnterprise(addContactToEnterpriseDTO);
         return new ResponseEntity<>(contact, HttpStatus.CREATED);
     }
 

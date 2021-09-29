@@ -1,10 +1,10 @@
 package com.genisis.test.features.contact;
 
 import com.genisis.test.features.contact.dto.ContactDTO;
+import com.genisis.test.features.contact.dto.UpdateContactDTO;
 import com.genisis.test.features.enterprise.Enterprise;
 import com.genisis.test.features.enterprise.EnterpriseRepository;
-import com.genisis.test.features.enterprise.dto.ContactToEnterpriseDTO;
-import org.hibernate.exception.ConstraintViolationException;
+import com.genisis.test.features.enterprise.dto.AddContactToEnterpriseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,7 +64,7 @@ public class ContactService {
      * update contact.
      *
      * @param contactID  contactID input
-     * @param contactDTO contactDTO input
+     * @param updateContactDTO contactDTO input
      * @return the saved contact
      * @throws Exception contact not found
      * @throws Exception enterprise not found
@@ -72,23 +72,23 @@ public class ContactService {
      * @version 1.0
      * @since 0.0.1
      */
-    public Contact updateContact(String contactID, ContactDTO contactDTO) throws Exception {
+    public Contact updateContact(String contactID, UpdateContactDTO updateContactDTO) throws Exception {
         UUID uuid = checkUUID(contactID);
         Optional<Contact> contact = contactRepository.findById(uuid);
         if (contact.isPresent()) {
             Contact contactToUpdate = contact.get();
             contactToUpdate.preUpdate();
-            contactToUpdate.setLastName(contactDTO.getLastName());
-            contactToUpdate.setFirstName(contactDTO.getFirstName());
-            contactToUpdate.setTvaNumber(contactDTO.getTvaNumber());
-            contactToUpdate.setAddress(contactDTO.getAddress());
+            if (updateContactDTO.getLastName() != null) contactToUpdate.setLastName(updateContactDTO.getLastName());
+            if (updateContactDTO.getFirstName() != null) contactToUpdate.setFirstName(updateContactDTO.getFirstName());
+            if (updateContactDTO.getTvaNumber() != null) contactToUpdate.setTvaNumber(updateContactDTO.getTvaNumber());
+            if (updateContactDTO.getAddress() != null) contactToUpdate.setAddress(updateContactDTO.getAddress());
 
             // enterprises
             Set<Enterprise> enterprises = new HashSet<Enterprise>();
             // check if is a freelancer
-            if (contactDTO.getEnterprises() != null && !contactDTO.getEnterprises().isEmpty()) {
+            if (updateContactDTO.getEnterprises() != null && !updateContactDTO.getEnterprises().isEmpty()) {
                 contactToUpdate.setTvaNumber(null);
-                for (String enterpriseID : contactDTO.getEnterprises()) {
+                for (String enterpriseID : updateContactDTO.getEnterprises()) {
                     UUID enterpriseUUID = checkUUID(enterpriseID);
                     Enterprise enterprise = new Enterprise();
                     boolean exists = enterpriseRepository.existsById(enterpriseUUID);
@@ -111,7 +111,7 @@ public class ContactService {
     /**
      * delete contact.
      *
-     * @param contactID  contactID input
+     * @param contactID contactID input
      * @return the saved contact
      * @throws Exception contact not found
      * @throws Exception enterprise not found
@@ -119,10 +119,10 @@ public class ContactService {
      * @version 1.0
      * @since 0.0.1
      */
-    public boolean deleteContact(String contactID) throws Exception{
+    public boolean deleteContact(String contactID) throws Exception {
         UUID uuid = checkUUID(contactID);
         boolean exists = contactRepository.existsById(uuid);
-        if(exists) contactRepository.deleteById(uuid);
+        if (exists) contactRepository.deleteById(uuid);
         return exists;
     }
 
@@ -130,7 +130,7 @@ public class ContactService {
     /**
      * check uuid validity.
      *
-     * @param id  contactID string input
+     * @param id contactID string input
      * @return UUID
      * @author Ali BOUGARNE
      * @version 1.0
@@ -149,7 +149,7 @@ public class ContactService {
     /**
      * add one contact to an enterprise.
      *
-     * @param contactToEnterpriseDTO contactToEnterpriseDTO input
+     * @param addContactToEnterpriseDTO contactToEnterpriseDTO input
      * @return the updated enterprise
      * @throws Exception enterprise not found
      * @throws Exception contact not found
@@ -157,21 +157,21 @@ public class ContactService {
      * @version 1.0
      * @since 0.0.1
      */
-    public Contact addContactToEnterprise(ContactToEnterpriseDTO contactToEnterpriseDTO) throws Exception {
+    public Contact addContactToEnterprise(AddContactToEnterpriseDTO addContactToEnterpriseDTO) throws Exception {
         // check uuid validity
-        UUID enterpriseUUID = ContactService.checkUUID(contactToEnterpriseDTO.getEnterpriseID());
-        UUID contactUUID = ContactService.checkUUID(contactToEnterpriseDTO.getContactID());
+        UUID enterpriseUUID = ContactService.checkUUID(addContactToEnterpriseDTO.getEnterpriseID());
+        UUID contactUUID = ContactService.checkUUID(addContactToEnterpriseDTO.getContactID());
         // check contact and enterprise existence
         Optional<Enterprise> enterpriseOptional = enterpriseRepository.findById(enterpriseUUID);
         Optional<Contact> contactOptional = contactRepository.findById(contactUUID);
-        if(contactOptional.isPresent() && enterpriseOptional.isPresent()){
+        if (contactOptional.isPresent() && enterpriseOptional.isPresent()) {
             Contact contact = contactOptional.get();
             Enterprise enterprise = enterpriseOptional.get();
             Set<Enterprise> enterprises = new HashSet<>();
-            if(!contact.getEnterprises().isEmpty()){
-                if(contact.getEnterprises().contains(enterprise)){
+            if (!contact.getEnterprises().isEmpty()) {
+                if (contact.getEnterprises().contains(enterprise)) {
                     throw new Exception("this contact is already added to this enterprise");
-                }else{
+                } else {
                     enterprises.addAll(contact.getEnterprises());
                 }
             }

@@ -1,9 +1,8 @@
 package com.genisis.test.features.enterprise;
 
 
-import com.genisis.test.features.contact.Contact;
-import com.genisis.test.features.enterprise.dto.ContactToEnterpriseDTO;
 import com.genisis.test.features.enterprise.dto.EnterpriseDTO;
+import com.genisis.test.features.enterprise.dto.UpdateEnterpriseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -52,9 +51,9 @@ public class EnterpriseController {
     @PutMapping("/{enterpriseID}")
     public ResponseEntity<?> updateEnterprise(
             @PathVariable String enterpriseID,
-            @Valid @RequestBody EnterpriseDTO enterpriseDTO
+            @Valid @RequestBody UpdateEnterpriseDTO updateEnterpriseDTO
     ) throws Exception {
-        Enterprise enterprise = enterpriseService.updateEnterprise(enterpriseID, enterpriseDTO);
+        Enterprise enterprise = enterpriseService.updateEnterprise(enterpriseID, updateEnterpriseDTO);
         return new ResponseEntity<>(enterprise, HttpStatus.CREATED);
     }
 }

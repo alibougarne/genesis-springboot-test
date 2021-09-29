@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @AllArgsConstructor
-public class ContactToEnterpriseDTO {
+public class AddContactToEnterpriseDTO {
     @NotNull(message = "contact ID may not be null")
     @NotEmpty(message = "contact ID must be not empty")
     private String contactID;
