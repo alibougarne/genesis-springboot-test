@@ -43,9 +43,9 @@ public class DataSeeder {
         try {
             return args -> {
                 System.out.println("🚀 useSeeds? : "+useSeeds);
+                // change database.seed value in application.properties to interrupt data seeding
                 if(useSeeds){
                     System.out.println("🚀 Seeding data Begin...");
-                    // comment line for interrupt data seeding
                     EnterprisesSeeds.seedData(enterpriseRepository);
                     ContactSeeds.seedData(contactRepository, enterpriseRepository);
                     System.out.println("🎯 Seeding data completed...");
