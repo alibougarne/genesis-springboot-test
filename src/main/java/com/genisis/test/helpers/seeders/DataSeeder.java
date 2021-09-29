@@ -1,6 +1,8 @@
 package com.genisis.test.helpers.seeders;
 
+import com.genisis.test.features.contact.ContactRepository;
 import com.genisis.test.features.enterprise.EnterpriseRepository;
+import db.seeds.ContactSeeds;
 import db.seeds.EnterprisesSeeds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,14 +17,21 @@ import org.springframework.transaction.annotation.Transactional;
 public class DataSeeder {
 
     /**
-     * The User repository.
+     * The enterprise repository.
      */
     @Autowired
     EnterpriseRepository enterpriseRepository;
 
     /**
+     * The enterprise repository.
+     */
+    @Autowired
+    ContactRepository contactRepository;
+
+    /**
      * Command line runner command line runner.
      * used to seed some data on app start-up
+     *
      * @return the command line runner
      */
     @Bean
@@ -33,6 +42,7 @@ public class DataSeeder {
                 System.out.println("🚀 Seeding data Begin...");
                 // comment line for interrupt data seeding
                 EnterprisesSeeds.seedData(enterpriseRepository);
+                ContactSeeds.seedData(contactRepository, enterpriseRepository);
                 System.out.println("🎯 Seeding data completed...");
             };
         } catch (Exception e) {
