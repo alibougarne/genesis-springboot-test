@@ -12,7 +12,7 @@ an exercise test with spring boot
 
 ## Data seeds
 i used java faker to generate data seeders
-replace application.properties to interrupting seeds
+replace the following code in application.properties to interrupting seeds
 ```properties
 database.seed = true
 ```
