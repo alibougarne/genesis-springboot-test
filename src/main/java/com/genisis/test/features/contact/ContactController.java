@@ -1,6 +1,8 @@
 package com.genisis.test.features.contact;
 
 import com.genisis.test.features.contact.dto.ContactDTO;
+import com.genisis.test.features.enterprise.Enterprise;
+import com.genisis.test.features.enterprise.dto.ContactToEnterpriseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,5 +48,14 @@ public class ContactController {
         res.put("success", "contact with ID: " + contactID + " removed successfully");
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+
+    // add a contact to an enterprise
+    // this will add one contact to on enterprise only
+    @PostMapping("/add-one-contact-to-enterprise")
+    public ResponseEntity<?> addContactToEnterprise(@Valid @RequestBody ContactToEnterpriseDTO contactToEnterpriseDTO) throws Exception {
+        Contact contact = contactService.addContactToEnterprise(contactToEnterpriseDTO);
+        return new ResponseEntity<>(contact, HttpStatus.CREATED);
+    }
+
 
 }

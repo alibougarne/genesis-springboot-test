@@ -3,6 +3,7 @@ package com.genisis.test.features.contact;
 import com.genisis.test.features.contact.dto.ContactDTO;
 import com.genisis.test.features.enterprise.Enterprise;
 import com.genisis.test.features.enterprise.EnterpriseRepository;
+import com.genisis.test.features.enterprise.dto.ContactToEnterpriseDTO;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -125,6 +126,16 @@ public class ContactService {
         return exists;
     }
 
+
+    /**
+     * check uuid validity.
+     *
+     * @param id  contactID string input
+     * @return UUID
+     * @author Ali BOUGARNE
+     * @version 1.0
+     * @since 0.0.1
+     */
     public static UUID checkUUID(String id) {
         if (id.matches("[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}")) {
             return UUID.fromString(id);
@@ -135,5 +146,40 @@ public class ContactService {
         }
     }
 
-
+    /**
+     * add one contact to an enterprise.
+     *
+     * @param contactToEnterpriseDTO contactToEnterpriseDTO input
+     * @return the updated enterprise
+     * @throws Exception enterprise not found
+     * @throws Exception contact not found
+     * @author Ali BOUGARNE
+     * @version 1.0
+     * @since 0.0.1
+     */
+    public Contact addContactToEnterprise(ContactToEnterpriseDTO contactToEnterpriseDTO) throws Exception {
+        // check uuid validity
+        UUID enterpriseUUID = ContactService.checkUUID(contactToEnterpriseDTO.getEnterpriseID());
+        UUID contactUUID = ContactService.checkUUID(contactToEnterpriseDTO.getContactID());
+        // check contact and enterprise existence
+        Optional<Enterprise> enterpriseOptional = enterpriseRepository.findById(enterpriseUUID);
+        Optional<Contact> contactOptional = contactRepository.findById(contactUUID);
+        if(contactOptional.isPresent() && enterpriseOptional.isPresent()){
+            Contact contact = contactOptional.get();
+            Enterprise enterprise = enterpriseOptional.get();
+            Set<Enterprise> enterprises = new HashSet<>();
+            if(!contact.getEnterprises().isEmpty()){
+                if(contact.getEnterprises().contains(enterprise)){
+                    throw new Exception("this contact is already added to this enterprise");
+                }else{
+                    enterprises.addAll(contact.getEnterprises());
+                }
+            }
+            enterprises.add(enterprise);
+            contact.setEnterprises(enterprises);
+            contact = contactRepository.save(contact);
+            return contact;
+        }
+        throw new Exception("please enter a valid enterprise/contact");
+    }
 }

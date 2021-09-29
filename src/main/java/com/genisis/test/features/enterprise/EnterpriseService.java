@@ -1,6 +1,6 @@
 package com.genisis.test.features.enterprise;
 
-import com.genisis.test.features.contact.Contact;
+import com.genisis.test.features.contact.ContactRepository;
 import com.genisis.test.features.contact.ContactService;
 import com.genisis.test.features.enterprise.dto.EnterpriseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,12 @@ import java.util.UUID;
 
 @Service
 public class EnterpriseService {
-    @Autowired
-    private EnterpriseRepository enterpriseRepository;
+
+    private final EnterpriseRepository enterpriseRepository;
+
+    public EnterpriseService(EnterpriseRepository enterpriseRepository) {
+        this.enterpriseRepository = enterpriseRepository;
+    }
 
     /**
      * Save a new enterprise.
@@ -57,4 +61,6 @@ public class EnterpriseService {
         } else throw new Exception("enterprise with ID: " + enterpriseID + " not found");
 
     }
+
+
 }
