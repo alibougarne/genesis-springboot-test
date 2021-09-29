@@ -26,4 +26,15 @@ public class EnterpriseController {
         return new ResponseEntity<>(enterprise, HttpStatus.CREATED);
     }
 
+    // update a contact
+    @PutMapping("/{enterpriseID}")
+    public ResponseEntity<?> updateEnterprise(
+            @PathVariable String enterpriseID,
+            @Valid @RequestBody EnterpriseDTO enterpriseDTO
+    ) throws Exception {
+        Enterprise enterprise = enterpriseService.updateEnterprise(enterpriseID, enterpriseDTO);
+        return new ResponseEntity<>(enterprise, HttpStatus.CREATED);
+    }
+
+    
 }
