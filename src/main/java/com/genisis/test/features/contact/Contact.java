@@ -1,11 +1,8 @@
 package com.genisis.test.features.contact;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.genisis.test.features.enterprise.Enterprise;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.NaturalId;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
