@@ -15,10 +15,23 @@ public class ContactController {
     @Autowired
     ContactService contactService;
 
+    // create a contact + validation dto
     @PostMapping("/")
     public ResponseEntity<?> createContact(@Valid @RequestBody ContactDTO contactDTO) throws Exception {
         System.out.println(contactDTO.getAddress());
         Contact contact = contactService.saveContact(contactDTO);
         return new ResponseEntity<>(contact, HttpStatus.CREATED);
     }
+
+    // update a contact
+    @PutMapping("/{contactID}")
+    public ResponseEntity<?> updateContact(
+            @PathVariable String contactID,
+            @Valid @RequestBody ContactDTO contactDTO
+    ) throws Exception {
+        System.out.println(contactDTO.getAddress());
+        Contact contact = contactService.updateContact(contactID, contactDTO);
+        return new ResponseEntity<>(contact, HttpStatus.CREATED);
+    }
+
 }

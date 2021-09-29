@@ -31,5 +31,5 @@ public class ContactDTO {
     @Size(max = 1000, message = "address should have at max 1000 characters")
     private String address;
     private Integer tvaNumber;
-    private Set<UUID> enterprises;
+    private Set<String> enterprises;
 }
