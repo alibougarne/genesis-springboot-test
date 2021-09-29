@@ -9,7 +9,29 @@ an exercise test with spring boot
 - java faker for seeding data
 - spring data
 - lombok
-
+## project structure
+    .
+    ├── ...
+    ├── src                                 # Test files (alternatively `spec` or `tests`)
+    │   ├── main                            # Load and stress tests
+            ├── java                        # java folder
+            ├   ├── com.genesis.test        # code logic
+            ├   ├   ├── config              # config classes
+            ├   ├   ├── features            # contain separated featers (in our case contact and enterprise)
+            ├   ├   ├        ├── feature        # feature package
+            ├   ├   ├        ├── dto        # dto folder
+            ├   ├   ├        ├── entityClass       
+            ├   ├   ├        ├── controller 
+            ├   ├   ├        ├── service        
+            ├   ├   ├        ├── repository  
+            ├   ├   ├── helpers             # 
+            ├   ├       ├── exceptions      # Exception handling
+            ├   ├       ├── seeders         # Data seeders
+            ├── db.seeds                    # data seeds
+    │   ├
+    │   ├── test                            # tests (not implemented yet)
+    │
+    └── ...
 ## Data seeds
 i used java faker to generate data seeders
 replace the following code in application.properties to interrupting seeds
