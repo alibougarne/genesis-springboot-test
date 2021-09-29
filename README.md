@@ -18,7 +18,7 @@ an exercise test with spring boot
     │   │   ├   ├── com.genesis.test        # code logic
     │   │   ├   ├   ├── config              # config classes
     │   │   ├   ├   ├── features            # contain separated featers (in our case contact and enterprise)
-    │   │   ├   ├   ├        ├── feature        # feature package
+    │   │   ├   ├   ├        ├── feature    # feature package
     │   │   ├   ├   ├        ├── dto        # dto folder
     │   │   ├   ├   ├        ├── entityClass       
     │   │   ├   ├   ├        ├── controller 
