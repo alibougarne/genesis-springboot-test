@@ -21,7 +21,7 @@ public class Enterprise {
     private UUID Id;
 
     @Basic
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "name", unique = true, nullable = false, length = 100)
     private String name;
 
     @Basic
@@ -29,8 +29,8 @@ public class Enterprise {
     private String address;
 
     @Basic
-    @Column(name = "tva_number", nullable = true)
-    private Integer tvaNumber = null;
+    @Column(name = "tva_number", nullable = false)
+    private Integer tvaNumber;
 
     @Basic
     @Column(name = "created_at", nullable = true)
