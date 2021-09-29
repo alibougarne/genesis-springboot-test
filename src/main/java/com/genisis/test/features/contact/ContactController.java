@@ -1,8 +1,13 @@
 package com.genisis.test.features.contact;
 
 import com.genisis.test.features.contact.dto.ContactDTO;
-import com.genisis.test.features.enterprise.Enterprise;
 import com.genisis.test.features.enterprise.dto.ContactToEnterpriseDTO;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +23,14 @@ public class ContactController {
     ContactService contactService;
 
     // create a contact + validation dto
+    @Operation(summary = "Create a new contact")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Contact created",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Contact.class))}),
+            @ApiResponse(responseCode = "400", description = "Error creating contact ",
+                    content = @Content),
+    })
     @PostMapping("/")
     public ResponseEntity<?> createContact(@Valid @RequestBody ContactDTO contactDTO) throws Exception {
         Contact contact = contactService.saveContact(contactDTO);
@@ -25,6 +38,16 @@ public class ContactController {
     }
 
     // update a contact
+    @Operation(summary = "Update a contact by contact ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Contact updated",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Contact.class))}),
+            @ApiResponse(responseCode = "400", description = "Error updating contact ",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "contact with ID: {contactID} not found",
+                    content = @Content)
+    })
     @PutMapping("/{contactID}")
     public ResponseEntity<?> updateContact(
             @PathVariable String contactID,
@@ -35,6 +58,14 @@ public class ContactController {
     }
 
     // delete a contact
+    @Operation(summary = "Delete a contact by contact ID")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Contact deleted",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Contact.class))}),
+            @ApiResponse(responseCode = "404", description = "contact with ID: {contactID} not found",
+                    content = @Content),
+    })
     @DeleteMapping("{contactID}")
     public ResponseEntity<?> deleteContact(
             @PathVariable String contactID
@@ -51,6 +82,14 @@ public class ContactController {
 
     // add a contact to an enterprise
     // this will add one contact to on enterprise only
+    @Operation(summary = "Add a contact to an enterprise", description = "this will add one contact to on enterprise only")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Contact updated",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Contact.class))}),
+            @ApiResponse(responseCode = "404", description = "contact/description not found",
+                    content = @Content),
+    })
     @PostMapping("/add-one-contact-to-enterprise")
     public ResponseEntity<?> addContactToEnterprise(@Valid @RequestBody ContactToEnterpriseDTO contactToEnterpriseDTO) throws Exception {
         Contact contact = contactService.addContactToEnterprise(contactToEnterpriseDTO);
