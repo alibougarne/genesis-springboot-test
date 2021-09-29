@@ -84,11 +84,21 @@ public class ContactController {
     // this will add one contact to on enterprise only
     @Operation(summary = "Add a contact to an enterprise", description = "this will add one contact to on enterprise only")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Contact updated",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Contact.class))}),
-            @ApiResponse(responseCode = "404", description = "contact/description not found",
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Contact updated",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = Contact.class)
+                            )
+                    }
+            ),
+
+            @ApiResponse(responseCode = "404", description = "this contact is already added to this enterprise",
                     content = @Content),
+            @ApiResponse(responseCode = "404", description = "contact with ID: {contactID} not found",
+                    content = @Content)
     })
     @PostMapping("/add-one-contact-to-enterprise")
     public ResponseEntity<?> addContactToEnterprise(@Valid @RequestBody ContactToEnterpriseDTO contactToEnterpriseDTO) throws Exception {
