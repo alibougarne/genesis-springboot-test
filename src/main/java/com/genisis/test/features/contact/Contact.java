@@ -1,9 +1,12 @@
 package com.genisis.test.features.contact;
 
 import com.genisis.test.features.enterprise.Enterprise;
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
@@ -12,7 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Table(name = "\"contacts\"")
-public class Contact {
+public class Contact implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false)
@@ -57,7 +60,7 @@ public class Contact {
             },
             inverseJoinColumns = {@JoinColumn(name = "enterprise_id")}
     )
-    Set<Enterprise> enterprises;
+    private Set<Enterprise> enterprises;
 
     @PrePersist
     public void prePersist() {

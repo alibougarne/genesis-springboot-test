@@ -43,12 +43,12 @@ public class ContactSeeds {
         System.out.println("🧩 Seeding Freelancers data...");
         contacts = new HashSet<>();
         for (int i = 0; i <= 5; i++) {
-
             Contact contact = new Contact();
             contact.setFirstName(faker.name().firstName());
             contact.setLastName(faker.name().lastName());
             contact.setAddress(faker.address().fullAddress());
             contact.setIsFreelancer(true);
+            System.out.println("contact seed  enterprises: "+contact.getEnterprises());
             contact.setTvaNumber(faker.number().numberBetween(1000, 5000));
             contacts.add(contact);
         }

@@ -3,6 +3,7 @@ package com.genisis.test.features.contact;
 import com.genisis.test.features.contact.dto.ContactDTO;
 import com.genisis.test.features.enterprise.Enterprise;
 import com.genisis.test.features.enterprise.EnterpriseRepository;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,22 +35,34 @@ public class ContactService {
         contact.setFirstName(contactDTO.getFirstName());
         contact.setLastName(contactDTO.getLastName());
         contact.setAddress(contactDTO.getAddress());
-        contact.setIsFreelancer(contactDTO.getIsFreelancer());
+        contact.setIsFreelancer(contactDTO.getIsFreelancer()?contactDTO.getIsFreelancer():false);
         contact.setTvaNumber(contactDTO.getTvaNumber());
+        System.out.println();
         // enterprises
         Set<Enterprise> enterprises = new HashSet<Enterprise>();
-        for (UUID enterpriseID : contactDTO.getEnterprises()) {
-            Enterprise enterprise = new Enterprise();
-            boolean exists = enterpriseRepository.existsById(enterpriseID);
-            if (exists) {
-                enterprise.setId(enterpriseID);
-                enterprises.add(enterprise);
-            } else
-                throw new Exception("Enterprise with ID: " + enterpriseID + " not found");
+        if (contactDTO.getEnterprises() != null && !contactDTO.getEnterprises().isEmpty()) {
+            for (UUID enterpriseID : contactDTO.getEnterprises()) {
+                Enterprise enterprise = new Enterprise();
+                boolean exists = enterpriseRepository.existsById(enterpriseID);
+                if (exists) {
+                    enterprise.setId(enterpriseID);
+                    enterprises.add(enterprise);
+                } else
+                    throw new Exception("Enterprise with ID: " + enterpriseID + " not found");
+            }
+            contact.setEnterprises(enterprises);
         }
-        contact.setEnterprises(enterprises);
+        else {
+            contact.setEnterprises(null);
+        }
         // save contact
+        System.out.println("contact to be saved");
+        System.out.println(contact.getEnterprises());
+        System.out.println(contact.getAddress());
         contact = contactRepository.save(contact);
+      /*  if (contact == null) throw new ConstraintViolationException(
+                ""
+        );*/
         return contact;
     }
 }
