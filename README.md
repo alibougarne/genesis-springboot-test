@@ -14,11 +14,11 @@ an exercise test with spring boot
 i used java faker to generate data seeders
 replace application.properties to interrupting seeds
 ```properties
-database.seed= true
+database.seed = true
 ```
 with
 ```properties
-database.seed= false
+database.seed = false
 ```
 ## H2 console
 http://localhost:5000/h2console/
