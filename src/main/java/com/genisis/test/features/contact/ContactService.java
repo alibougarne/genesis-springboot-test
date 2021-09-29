@@ -107,6 +107,24 @@ public class ContactService {
         }
     }
 
+    /**
+     * delete contact.
+     *
+     * @param contactID  contactID input
+     * @return the saved contact
+     * @throws Exception contact not found
+     * @throws Exception enterprise not found
+     * @author Ali BOUGARNE
+     * @version 1.0
+     * @since 0.0.1
+     */
+    public boolean deleteContact(String contactID) throws Exception{
+        UUID uuid = checkUUID(contactID);
+        boolean exists = contactRepository.existsById(uuid);
+        if(exists) contactRepository.deleteById(uuid);
+        return exists;
+    }
+
     public UUID checkUUID(String id) {
         if (id.matches("[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}")) {
             return UUID.fromString(id);
@@ -116,4 +134,6 @@ public class ContactService {
             return uuid;
         }
     }
+
+
 }
