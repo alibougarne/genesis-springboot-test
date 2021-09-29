@@ -14,20 +14,20 @@ an exercise test with spring boot
     ├── ...
     ├── src                                 # Test files (alternatively `spec` or `tests`)
     │   ├── main                            # Load and stress tests
-            ├── java                        # java folder
-            ├   ├── com.genesis.test        # code logic
-            ├   ├   ├── config              # config classes
-            ├   ├   ├── features            # contain separated featers (in our case contact and enterprise)
-            ├   ├   ├        ├── feature        # feature package
-            ├   ├   ├        ├── dto        # dto folder
-            ├   ├   ├        ├── entityClass       
-            ├   ├   ├        ├── controller 
-            ├   ├   ├        ├── service        
-            ├   ├   ├        ├── repository  
-            ├   ├   ├── helpers             # 
-            ├   ├       ├── exceptions      # Exception handling
-            ├   ├       ├── seeders         # Data seeders
-            ├── db.seeds                    # data seeds
+    │   │   ├── java                        # java folder
+    │   │   ├   ├── com.genesis.test        # code logic
+    │   │   ├   ├   ├── config              # config classes
+    │   │   ├   ├   ├── features            # contain separated featers (in our case contact and enterprise)
+    │   │   ├   ├   ├        ├── feature        # feature package
+    │   │   ├   ├   ├        ├── dto        # dto folder
+    │   │   ├   ├   ├        ├── entityClass       
+    │   │   ├   ├   ├        ├── controller 
+    │   │   ├   ├   ├        ├── service        
+    │   │   ├   ├   ├        ├── repository  
+    │   │   ├   ├   ├── helpers             # 
+    │   │   ├   ├       ├── exceptions      # Exception handling
+    │   │   ├   ├       ├── seeders         # Data seeders
+    │   │   ├── db.seeds                    # data seeds
     │   ├
     │   ├── test                            # tests (not implemented yet)
     │
