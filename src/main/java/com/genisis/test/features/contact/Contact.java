@@ -34,10 +34,6 @@ public class Contact implements Serializable {
     private String address;
 
     @Basic
-    @Column(name = "is_freelancer")
-    private Boolean  isFreelancer = false;
-
-    @Basic
     @Column(name = "tva_number", nullable = true)
     private Integer tvaNumber = null;
 

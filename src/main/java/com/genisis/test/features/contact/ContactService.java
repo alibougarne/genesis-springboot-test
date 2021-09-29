@@ -35,11 +35,11 @@ public class ContactService {
         contact.setFirstName(contactDTO.getFirstName());
         contact.setLastName(contactDTO.getLastName());
         contact.setAddress(contactDTO.getAddress());
-        contact.setIsFreelancer(contactDTO.getIsFreelancer()?contactDTO.getIsFreelancer():false);
         contact.setTvaNumber(contactDTO.getTvaNumber());
         System.out.println();
         // enterprises
         Set<Enterprise> enterprises = new HashSet<Enterprise>();
+        // check if is a freelancer
         if (contactDTO.getEnterprises() != null && !contactDTO.getEnterprises().isEmpty()) {
             for (UUID enterpriseID : contactDTO.getEnterprises()) {
                 Enterprise enterprise = new Enterprise();
@@ -52,17 +52,8 @@ public class ContactService {
             }
             contact.setEnterprises(enterprises);
         }
-        else {
-            contact.setEnterprises(null);
-        }
         // save contact
-        System.out.println("contact to be saved");
-        System.out.println(contact.getEnterprises());
-        System.out.println(contact.getAddress());
         contact = contactRepository.save(contact);
-      /*  if (contact == null) throw new ConstraintViolationException(
-                ""
-        );*/
         return contact;
     }
 }
