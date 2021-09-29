@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/contacts")
@@ -40,7 +39,6 @@ public class ContactController {
     ) throws Exception {
         boolean isRemoved = contactService.deleteContact(contactID);
         HashMap<String, String> res = new HashMap<>();
-
         if (!isRemoved) {
             res.put("error", "contact with ID: " + contactID + " not found");
             return new ResponseEntity<>(res, HttpStatus.NOT_FOUND);

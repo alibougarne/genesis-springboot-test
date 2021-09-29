@@ -13,13 +13,12 @@ public class EnterpriseService {
      * Save a new enterprise.
      *
      * @param enterpriseDTO enterpriseDTO input
-     * @return the saved contact
+     * @return the saved enterprise
      * @author Ali BOUGARNE
      * @version 1.0
      * @since 0.0.1
      */
     public Enterprise saveEnterprise(EnterpriseDTO enterpriseDTO) {
-
         Enterprise enterprise = new Enterprise();
         enterprise.setName(enterpriseDTO.getName());
         enterprise.setAddress(enterpriseDTO.getAddress());
