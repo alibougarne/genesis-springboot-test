@@ -59,8 +59,8 @@ an exercise test with spring boot
     │
     └── ...
 ## Data seeds
-i used java faker to generate data seeders
-replace the following code in application.properties to interrupting seeds
+i used java faker to generate data seeders,
+replace the following code in application.properties to interrupt seeds
 ```properties
 database.seed = true
 ```
@@ -77,4 +77,3 @@ make sur to put the following into the explore input
 ```
 /api-docs/
 ```
-
