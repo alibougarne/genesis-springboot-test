@@ -12,9 +12,9 @@ an exercise test with spring boot
 ## project structure
     .
     ├── ...
-    ├── src                                                 # Test files (alternatively `spec` or `tests`)
-    │   ├── main                                            # Load and stress tests
-    │   │   ├── java                                        # java folder
+    ├── src                                                 # Source folder
+    │   ├── main                                            # main package
+    │   │   ├── java                                        # java
     │   │   ├   ├── com.genesis.test                        # code logic
     │   │   ├   ├   ├── config                              # config classes
     │   │   ├   ├   ├── controller.v1                       # contain v1 controllers
