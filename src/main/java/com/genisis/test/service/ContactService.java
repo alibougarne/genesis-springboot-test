@@ -1,10 +1,12 @@
-package com.genisis.test.features.contact;
+package com.genisis.test.service;
 
-import com.genisis.test.features.contact.dto.ContactDTO;
-import com.genisis.test.features.contact.dto.UpdateContactDTO;
-import com.genisis.test.features.enterprise.Enterprise;
-import com.genisis.test.features.enterprise.EnterpriseRepository;
-import com.genisis.test.features.enterprise.dto.AddContactToEnterpriseDTO;
+import com.genisis.test.model.Contact;
+import com.genisis.test.dto.contact.ContactDTO;
+import com.genisis.test.dto.contact.UpdateContactDTO;
+import com.genisis.test.model.Enterprise;
+import com.genisis.test.repository.EnterpriseRepository;
+import com.genisis.test.dto.enterprise.AddContactToEnterpriseDTO;
+import com.genisis.test.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+
+import static com.genisis.test.utils.UuidUtils.checkUUID;
 
 @Service
 public class ContactService {
@@ -127,24 +131,7 @@ public class ContactService {
     }
 
 
-    /**
-     * check uuid validity.
-     *
-     * @param id contactID string input
-     * @return UUID
-     * @author Ali BOUGARNE
-     * @version 1.0
-     * @since 0.0.1
-     */
-    public static UUID checkUUID(String id) {
-        if (id.matches("[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}")) {
-            return UUID.fromString(id);
-        } else {
-            id = id.replaceAll("(.{8})(.{4})(.{4})(.{4})(.+)", "$1-$2-$3-$4-$5");
-            UUID uuid = UUID.fromString(id);
-            return uuid;
-        }
-    }
+
 
     /**
      * add one contact to an enterprise.
@@ -159,8 +146,8 @@ public class ContactService {
      */
     public Contact addContactToEnterprise(AddContactToEnterpriseDTO addContactToEnterpriseDTO) throws Exception {
         // check uuid validity
-        UUID enterpriseUUID = ContactService.checkUUID(addContactToEnterpriseDTO.getEnterpriseID());
-        UUID contactUUID = ContactService.checkUUID(addContactToEnterpriseDTO.getContactID());
+        UUID enterpriseUUID = checkUUID(addContactToEnterpriseDTO.getEnterpriseID());
+        UUID contactUUID = checkUUID(addContactToEnterpriseDTO.getContactID());
         // check contact and enterprise existence
         Optional<Enterprise> enterpriseOptional = enterpriseRepository.findById(enterpriseUUID);
         Optional<Contact> contactOptional = contactRepository.findById(contactUUID);

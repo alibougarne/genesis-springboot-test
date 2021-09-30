@@ -1,9 +1,9 @@
-package db.seeds;
+package com.genisis.test.helpers.seeds;
 
-import com.genisis.test.features.contact.Contact;
-import com.genisis.test.features.contact.ContactRepository;
-import com.genisis.test.features.enterprise.Enterprise;
-import com.genisis.test.features.enterprise.EnterpriseRepository;
+import com.genisis.test.model.Contact;
+import com.genisis.test.repository.ContactRepository;
+import com.genisis.test.model.Enterprise;
+import com.genisis.test.repository.EnterpriseRepository;
 import com.github.javafaker.Faker;
 import com.sun.istack.NotNull;
 
@@ -28,12 +28,10 @@ public class ContactSeeds {
                 contact.setTvaNumber(null);
                 int numberOfRandomValues = random.nextInt(7) + 4;
                 Set<Enterprise> newEnterpriseList = new HashSet<>();
-
                 for(int  j = 0; j < numberOfRandomValues; j++) {
                     int randomPosition = random.nextInt(enterprises.size());
                     newEnterpriseList.add(enterprises.get(randomPosition));
                 }
-                System.out.println("contact enterprises count: "+newEnterpriseList.size());
                 contact.setEnterprises(newEnterpriseList);
                 contacts.add(contact);
             }
@@ -47,7 +45,6 @@ public class ContactSeeds {
             contact.setFirstName(faker.name().firstName());
             contact.setLastName(faker.name().lastName());
             contact.setAddress(faker.address().fullAddress());
-            System.out.println("contact seed  enterprises: "+contact.getEnterprises());
             contact.setTvaNumber(faker.number().numberBetween(1000, 5000));
             contacts.add(contact);
         }

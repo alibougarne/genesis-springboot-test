@@ -1,8 +1,10 @@
-package com.genisis.test.features.enterprise;
+package com.genisis.test.controller.v1;
 
 
-import com.genisis.test.features.enterprise.dto.EnterpriseDTO;
-import com.genisis.test.features.enterprise.dto.UpdateEnterpriseDTO;
+import com.genisis.test.service.EnterpriseService;
+import com.genisis.test.dto.enterprise.EnterpriseDTO;
+import com.genisis.test.dto.enterprise.UpdateEnterpriseDTO;
+import com.genisis.test.model.Enterprise;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/api/enterprises")
+@RequestMapping(value = "/api/v1/enterprises")
 public class EnterpriseController {
 
     @Autowired

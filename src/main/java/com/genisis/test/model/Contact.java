@@ -1,14 +1,9 @@
-package com.genisis.test.features.contact;
+package com.genisis.test.model;
 
-import com.genisis.test.features.enterprise.Enterprise;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
-import javax.validation.constraints.Null;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;

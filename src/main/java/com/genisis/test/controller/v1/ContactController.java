@@ -1,8 +1,10 @@
-package com.genisis.test.features.contact;
+package com.genisis.test.controller.v1;
 
-import com.genisis.test.features.contact.dto.ContactDTO;
-import com.genisis.test.features.contact.dto.UpdateContactDTO;
-import com.genisis.test.features.enterprise.dto.AddContactToEnterpriseDTO;
+import com.genisis.test.model.Contact;
+import com.genisis.test.service.ContactService;
+import com.genisis.test.dto.contact.ContactDTO;
+import com.genisis.test.dto.contact.UpdateContactDTO;
+import com.genisis.test.dto.enterprise.AddContactToEnterpriseDTO;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,7 +20,7 @@ import javax.validation.Valid;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping(value = "/api/contacts")
+@RequestMapping(value = "/api/v1/contacts")
 public class ContactController {
     @Autowired
     ContactService contactService;

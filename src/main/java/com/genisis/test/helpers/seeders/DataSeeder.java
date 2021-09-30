@@ -1,9 +1,9 @@
 package com.genisis.test.helpers.seeders;
 
-import com.genisis.test.features.contact.ContactRepository;
-import com.genisis.test.features.enterprise.EnterpriseRepository;
-import db.seeds.ContactSeeds;
-import db.seeds.EnterprisesSeeds;
+import com.genisis.test.repository.ContactRepository;
+import com.genisis.test.repository.EnterpriseRepository;
+import com.genisis.test.helpers.seeds.ContactSeeds;
+import com.genisis.test.helpers.seeds.EnterprisesSeeds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;

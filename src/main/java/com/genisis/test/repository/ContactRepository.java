@@ -1,5 +1,6 @@
-package com.genisis.test.features.contact;
+package com.genisis.test.repository;
 
+import com.genisis.test.model.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package com.genisis.test.features.enterprise.dto;
+package com.genisis.test.dto.enterprise;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

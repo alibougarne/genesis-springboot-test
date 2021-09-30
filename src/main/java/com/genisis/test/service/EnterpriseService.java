@@ -1,16 +1,15 @@
-package com.genisis.test.features.enterprise;
+package com.genisis.test.service;
 
-import com.genisis.test.features.contact.ContactRepository;
-import com.genisis.test.features.contact.ContactService;
-import com.genisis.test.features.enterprise.dto.EnterpriseDTO;
-import com.genisis.test.features.enterprise.dto.UpdateEnterpriseDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
+import com.genisis.test.model.Enterprise;
+import com.genisis.test.repository.EnterpriseRepository;
+import com.genisis.test.dto.enterprise.EnterpriseDTO;
+import com.genisis.test.dto.enterprise.UpdateEnterpriseDTO;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
+
+import static com.genisis.test.utils.UuidUtils.checkUUID;
 
 @Service
 public class EnterpriseService {
@@ -52,7 +51,7 @@ public class EnterpriseService {
      */
     public Enterprise updateEnterprise(String enterpriseID, UpdateEnterpriseDTO updateEnterpriseDTO) throws Exception {
         // check uuid validity
-        UUID uuid = ContactService.checkUUID(enterpriseID);
+        UUID uuid = checkUUID(enterpriseID);
         Optional<Enterprise> enterpriseOptional = enterpriseRepository.findById(uuid);
         if (enterpriseOptional.isPresent()) {
             Enterprise enterprise = enterpriseOptional.get();

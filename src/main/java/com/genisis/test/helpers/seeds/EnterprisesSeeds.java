@@ -1,7 +1,7 @@
-package db.seeds;
+package com.genisis.test.helpers.seeds;
 
-import com.genisis.test.features.enterprise.Enterprise;
-import com.genisis.test.features.enterprise.EnterpriseRepository;
+import com.genisis.test.model.Enterprise;
+import com.genisis.test.repository.EnterpriseRepository;
 import com.github.javafaker.Faker;
 import com.sun.istack.NotNull;
 

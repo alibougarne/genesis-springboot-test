@@ -1,5 +1,6 @@
-package com.genisis.test.features.enterprise;
+package com.genisis.test.repository;
 
+import com.genisis.test.model.Enterprise;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

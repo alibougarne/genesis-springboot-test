@@ -27,7 +27,7 @@ an exercise test with spring boot
     │   │   ├   ├   ├── helpers             # 
     │   │   ├   ├       ├── exceptions      # Exception handling
     │   │   ├   ├       ├── seeders         # Data seeders
-    │   │   ├── db.seeds                    # data seeds
+    │   │   ├── com.genisis.test.helpers.seeds                    # data seeds
     │   ├
     │   ├── test                            # tests (not implemented yet)
     │

@@ -1,14 +1,12 @@
-package com.genisis.test.features.contact.dto;
+package com.genisis.test.dto.contact;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.persistence.Basic;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Set;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor

@@ -1,6 +1,5 @@
-package com.genisis.test.helpers.exceptions;
+package com.genisis.test.exception;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 

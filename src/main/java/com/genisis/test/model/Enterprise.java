@@ -1,7 +1,7 @@
-package com.genisis.test.features.enterprise;
+package com.genisis.test.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.genisis.test.features.contact.Contact;
+import com.genisis.test.model.Contact;
 import lombok.Getter;
 import lombok.Setter;
 
