@@ -12,7 +12,12 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "\"contacts\"")
+@Table(name = "\"contacts\""
+        // in case we add that last name and first name must be unique together
+        /*,uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"first_name", "last_name"})
+        }*/
+)
 public class Contact implements Serializable {
     @Id
     @GeneratedValue
