@@ -12,24 +12,26 @@ an exercise test with spring boot
 ## project structure
     .
     ├── ...
-    ├── src                                 # Test files (alternatively `spec` or `tests`)
-    │   ├── main                            # Load and stress tests
-    │   │   ├── java                        # java folder
-    │   │   ├   ├── com.genesis.test        # code logic
-    │   │   ├   ├   ├── config              # config classes
-    │   │   ├   ├   ├── features            # contain separated featers (in our case contact and enterprise)
-    │   │   ├   ├   ├        ├── feature        # feature package
-    │   │   ├   ├   ├        ├── dto        # dto folder
-    │   │   ├   ├   ├        ├── entityClass       
-    │   │   ├   ├   ├        ├── controller 
-    │   │   ├   ├   ├        ├── service        
-    │   │   ├   ├   ├        ├── repository  
-    │   │   ├   ├   ├── helpers             # 
-    │   │   ├   ├       ├── exceptions      # Exception handling
-    │   │   ├   ├       ├── seeders         # Data seeders
-    │   │   ├── com.genisis.test.helpers.seeds                    # data seeds
-    │   ├
-    │   ├── test                            # tests (not implemented yet)
+    ├── src                                                 # Test files (alternatively `spec` or `tests`)
+    │   ├── main                                            # Load and stress tests
+    │   │   ├── java                                        # java folder
+    │   │   ├   ├── com.genesis.test                        # code logic
+    │   │   ├   ├   ├── config                              # config classes
+    │   │   ├   ├   ├── controller.v1                       # contain v1 controllers
+    │   │   ├   ├   ├        ├── ContactController          # controller
+    │   │   ├   ├   ├        ├── EnterpriseController       # controller
+    │   │   ├   ├   ├── dto                                 # DTOs
+    │   │   ├   ├   │   ├── contact                         # all contact DTO's
+    │   │   ├   ├   │   ├── enterprise                      # all enterprise DTO's
+    │   │   ├   ├   ├── exception                           # contains all exception handlers  
+    │   │   ├   ├   ├── helpers                             # contains seeds 
+    │   │   ├   ├   │   ├── seeders                         # seed callers
+    │   │   ├   ├   │   ├── seeds                           # data
+    │   │   ├   ├   ├── model                               # contains entities 
+    │   │   ├   ├   ├── repository                          # contains repositories 
+    │   │   ├   ├   ├── service                             # contains services 
+    │   │   ├   ├   ├── utils                               # contains utils classes
+    │   ├── test                                            # tests (not implemented yet)
     │
     └── ...
 ## Data seeds
@@ -47,3 +49,8 @@ http://localhost:5000/h2console/
 
 ## Swagger ui
 http://localhost:5000/swagger-ui/index.html
+make sur to put the following into the explore input
+```
+/api-docs/
+```
+

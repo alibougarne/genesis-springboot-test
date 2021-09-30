@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -16,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class ExceptionHelper extends ResponseEntityExceptionHandler {
-    private static final Logger logger = LoggerFactory.getLogger(ExceptionHelper.class);
+public class ExceptionHandler extends ResponseEntityExceptionHandler {
+    private static final Logger logger = LoggerFactory.getLogger(ExceptionHandler.class);
 
-    @ExceptionHandler(value = {Exception.class})
+    @org.springframework.web.bind.annotation.ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleException(Exception ex) {
         logger.error("Exception: ", ex.getMessage());
         Map<String, String> response = new HashMap();
