@@ -164,6 +164,8 @@ public class ContactService {
             }
             enterprises.add(enterprise);
             contact.setEnterprises(enterprises);
+            // here we ensure that this contact is no longer a freelancer
+            contact.setTvaNumber(null);
             contact = contactRepository.save(contact);
             return contact;
         }
