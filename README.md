@@ -1,5 +1,28 @@
 # genesis-springboot-test
 an exercise test with spring boot
+<p align="center">
+    <a alt="Java">
+        <img src="https://img.shields.io/badge/Java-v11-orange.svg" />
+    </a>
+    <a alt="Spring Boot">
+        <img src="https://img.shields.io/badge/Spring%20Boot-v2.5.5-brightgreen.svg" />
+    </a>
+    <a alt="H2 Database">
+        <img src="https://img.shields.io/badge/H2%20Database-runtime-red.svg" />
+    </a>
+    <a alt="Maven">
+        <img src="https://img.shields.io/badge/Maven-v3-blue.svg" />
+    </a>
+    <a alt="Swagger UI">
+        <img src="https://img.shields.io/badge/spring%20doc%20openapi--ui-v1.5.2-yellowgreen.svg" />
+    </a>
+    <a alt="Dependencies">
+        <img src="https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg" />
+    </a>
+    <a alt="License">
+        <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
+    </a>
+</p>
 
 ## stack
 - spring boot 2.5.5
@@ -10,6 +33,7 @@ an exercise test with spring boot
 - spring data
 - lombok
 ## project structure
+
     .
     ├── ...
     ├── src                                                 # Source folder
