@@ -170,7 +170,7 @@ public class ContactService {
     }
 
     /**
-     * add one contact to an enterprise.
+     * find all contacts.
      *
      * @return contact list
      * @throws Exception contacts not found

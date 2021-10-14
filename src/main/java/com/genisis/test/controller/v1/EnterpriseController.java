@@ -1,6 +1,7 @@
 package com.genisis.test.controller.v1;
 
 
+import com.genisis.test.model.Contact;
 import com.genisis.test.service.EnterpriseService;
 import com.genisis.test.dto.enterprise.EnterpriseDTO;
 import com.genisis.test.dto.enterprise.UpdateEnterpriseDTO;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/v1/enterprises")
@@ -57,5 +59,11 @@ public class EnterpriseController {
     ) throws Exception {
         Enterprise enterprise = enterpriseService.updateEnterprise(enterpriseID, updateEnterpriseDTO);
         return new ResponseEntity<>(enterprise, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<?> getAllEnterprises()  throws Exception {
+        List<Enterprise> enterprises = enterpriseService.getAllEnterprises();
+        return new ResponseEntity<>(enterprises, HttpStatus.OK);
     }
 }

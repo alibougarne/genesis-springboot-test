@@ -6,6 +6,7 @@ import com.genisis.test.dto.enterprise.EnterpriseDTO;
 import com.genisis.test.dto.enterprise.UpdateEnterpriseDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -65,5 +66,19 @@ public class EnterpriseService {
 
     }
 
+    /**
+     * find all enterprises.
+     *
+     * @return enterprise list
+     * @throws Exception enterprises not found
+     * @author Ali BOUGARNE
+     * @version 1.0
+     * @since 0.0.1
+     */
+    public List<Enterprise> getAllEnterprises() throws Exception {
+        List<Enterprise> enterprises = enterpriseRepository.findAll();
+        if(enterprises.isEmpty()) throw new Exception("Enterprises not found");
+        return enterprises;
 
+    }
 }

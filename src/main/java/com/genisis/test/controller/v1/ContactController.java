@@ -114,7 +114,7 @@ public class ContactController {
     @GetMapping("/")
     public ResponseEntity<?> getAllContacts()  throws Exception {
         List<Contact> contacts = contactService.getAllContacts();
-        return new ResponseEntity<>(contacts, HttpStatus.CREATED);
+        return new ResponseEntity<>(contacts, HttpStatus.OK);
     }
 
 
