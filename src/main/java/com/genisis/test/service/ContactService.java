@@ -10,10 +10,7 @@ import com.genisis.test.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 import static com.genisis.test.utils.UuidUtils.checkUUID;
 
@@ -170,5 +167,20 @@ public class ContactService {
             return contact;
         }
         throw new Exception("please enter a valid enterprise/contact");
+    }
+
+    /**
+     * add one contact to an enterprise.
+     *
+     * @return contact list
+     * @throws Exception contacts not found
+     * @author Ali BOUGARNE
+     * @version 1.0
+     * @since 0.0.1
+     */
+    public List<Contact> getAllContacts() throws Exception {
+        List<Contact> contacts = contactRepository.findAll();
+        if (contacts.isEmpty()) throw new Exception("contacts not found");
+        return contacts;
     }
 }

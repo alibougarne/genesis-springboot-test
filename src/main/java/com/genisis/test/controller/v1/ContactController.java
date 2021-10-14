@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/api/v1/contacts")
@@ -107,6 +109,12 @@ public class ContactController {
     public ResponseEntity<?> addContactToEnterprise(@Valid @RequestBody AddContactToEnterpriseDTO addContactToEnterpriseDTO) throws Exception {
         Contact contact = contactService.addContactToEnterprise(addContactToEnterpriseDTO);
         return new ResponseEntity<>(contact, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<?> getAllContacts()  throws Exception {
+        List<Contact> contacts = contactService.getAllContacts();
+        return new ResponseEntity<>(contacts, HttpStatus.CREATED);
     }
 
 
