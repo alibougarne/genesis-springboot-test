@@ -1,6 +1,6 @@
 package com.genisis.test.helpers.seeders;
 
-import com.genisis.test.repository.ContactRepository;
+import com.genisis.test.repository.contacts.ContactRepository;
 import com.genisis.test.repository.EnterpriseRepository;
 import com.genisis.test.helpers.seeds.ContactSeeds;
 import com.genisis.test.helpers.seeds.EnterprisesSeeds;

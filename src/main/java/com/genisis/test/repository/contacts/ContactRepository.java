@@ -1,4 +1,4 @@
-package com.genisis.test.repository;
+package com.genisis.test.repository.contacts;
 
 import com.genisis.test.model.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -6,7 +6,7 @@ import com.genisis.test.dto.contact.UpdateContactDTO;
 import com.genisis.test.model.Enterprise;
 import com.genisis.test.repository.EnterpriseRepository;
 import com.genisis.test.dto.enterprise.AddContactToEnterpriseDTO;
-import com.genisis.test.repository.ContactRepository;
+import com.genisis.test.repository.contacts.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
